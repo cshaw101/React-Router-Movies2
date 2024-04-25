@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-export default function Movie(props) {
+export default function Movie({ movies }) {
   const [movie, setMovie] = useState();
 
   const { id } = useParams()

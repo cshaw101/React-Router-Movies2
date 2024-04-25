@@ -18,6 +18,7 @@ export default function App () {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movies' slice of state
           setMovies(response.data)
+          console.log(response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -34,8 +35,8 @@ export default function App () {
     <div>
       <SavedList list={[ /* This is stretch */]} />
       <Routes>
-        <Route path="/" element={<MovieList  />} />
-        <Route path="/movies/:id" element={<Movie />} />
+        <Route path="/" element={<MovieList movies={movies}  />} />
+        <Route path="/movies/:id" element={<Movie movies={movies} />} />
       </Routes>
     </div>
   );
