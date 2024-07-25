@@ -1,20 +1,24 @@
+// MovieList.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function MovieList(props) {
+export default function MovieList({ movies }) {
+  const navigate = useNavigate();
+
   return (
     <div className="movie-list">
-      {props.movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+      {movies.map(movie => (
+        <MovieDetails key={movie.id} movie={movie} navigate={navigate} />
       ))}
     </div>
   );
 }
 
-function MovieDetails(props) {
-  const { title, director, metascore } = props.movie;
+function MovieDetails({ movie, navigate }) {
+  const { id, title, director, metascore } = movie;
 
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={() => navigate(`/movies/${id}`)}>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
